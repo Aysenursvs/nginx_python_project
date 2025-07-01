@@ -1,7 +1,7 @@
 import requests
 
 for _ in range(5):
-    response = requests.get("http://localhost/", headers={"User-Agent": "haha-bot", "Accept": "*/*"})
+    response = requests.get("http://localhost/", headers={"User-Agent": "haha-bot", "Accept": "*/*"}, timeout=(1, 1))
 
     print(response.status_code)
     print(type(response.content))
