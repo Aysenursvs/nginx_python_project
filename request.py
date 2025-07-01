@@ -1,13 +1,19 @@
 import requests
 
-response = requests.get("https://api.github.com")
+URLS = ["https://api.github.com", "http://localhost/"]
+for url in URLS:
 
-if response:
-    print(str(response.status_code) + " --> Succesful!")
-else:
-    raise Exception(f"Non-success status code: {response.status_code}")
+    response = requests.get(url)
 
-content_of_response = response.json()
-for key, val in content_of_response.items():
-    print(key + ":" + str(val))
-print(response.headers)
+    if response:
+        print(str(response.status_code) + " --> Succesful!")
+    else:
+        raise Exception(f"Non-success status code: {response.status_code}")
+
+    content_of_response = response.content
+    print(type(content_of_response))
+    print(response.text)
+    print(response.headers)
+    print(response.headers["Content-Type"])
+    print(response.headers["Server"])
+    print("##################################################################")
